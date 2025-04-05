@@ -1,0 +1,16 @@
+---
+  - name: give permmision to files in managed node
+    hosts: all
+    become: yes #ensures that the tasks in the playbook will run as root
+    tasks:
+      - name: add permission to file
+        file:
+          path: /tmp/perm.txt
+          mode: '0755'
+  
+      - name: add ownership to file
+        file:
+          path: /tmp/perm.txt
+          owner: adham_abdein
+          group: devops
+  
